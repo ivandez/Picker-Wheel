@@ -43,12 +43,21 @@ const FortuneWheel = ({
   let frames = 0;
   const centerX = size + 20;
   const centerY = size + 20;
+
   useEffect(() => {
     wheelInit();
     setTimeout(() => {
       window.scrollTo(0, 1);
     }, 0);
   }, []);
+
+  useEffect(() => {
+    wheelInit();
+    setTimeout(() => {
+      window.scrollTo(0, 1);
+    }, 0);
+  }, [segments]);
+
   const wheelInit = () => {
     initCanvas();
     wheelDraw();
@@ -72,6 +81,7 @@ const FortuneWheel = ({
     isStarted = true;
     if (timerHandle === 0) {
       spinStart = new Date().getTime();
+      // TODO: floor or rounded this
       maxSpeed = Math.PI / segments.length;
       frames = 0;
       timerHandle = setInterval(onTimerTick, timerDelay);
@@ -141,7 +151,7 @@ const FortuneWheel = ({
     ctx.arc(centerX, centerY, size, lastAngle, angle, false);
     ctx.lineTo(centerX, centerY);
     ctx.closePath();
-    ctx.fillStyle = segColors[key];
+    ctx.fillStyle = "#F0CF50";
     ctx.fill();
     ctx.stroke();
     ctx.save();
