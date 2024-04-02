@@ -15,37 +15,32 @@ const FortuneWheel = ({
   downDuration = 1000,
   fontFamily = "proxima-nova",
 }) => {
-  const randomString = () => {
-    const chars =
-      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".split("");
-    const length = 8;
-    let str = "";
-    for (let i = 0; i < length; i++) {
-      str += chars[Math.floor(Math.random() * chars.length)];
-    }
-    return str;
-  };
+  // hooks
   const canvasId = useRef(`canvas-${randomString()}`);
   const wheelId = useRef(`wheel-${randomString()}`);
+  const [isFinished, setFinished] = useState(false);
+
+  // consts
   const dimension = (size + 20) * 2;
+  const timerDelay = segments.length;
+  const upTime = segments.length * upDuration;
+  const downTime = segments.length * downDuration;
+  const centerX = size + 20;
+  const centerY = size + 20;
+  const segColors = ["#5AB1BB", "#A5C882", "#F7DD72"];
+
+  // lets
   let currentSegment = "";
   let isStarted = false;
-  const [isFinished, setFinished] = useState(false);
   let timerHandle = 0;
-  const timerDelay = segments.length;
   let angleCurrent = 0;
   let angleDelta = 0;
   let canvasContext = null;
   let maxSpeed = Math.PI / segments.length;
-  const upTime = segments.length * upDuration;
-  const downTime = segments.length * downDuration;
   let spinStart = 0;
   let frames = 0;
-  const centerX = size + 20;
-  const centerY = size + 20;
 
-  const segColors = ["#5AB1BB", "#A5C882", "#F7DD72"];
-
+  // effects
   useEffect(() => {
     wheelInit();
     setTimeout(() => {
@@ -59,6 +54,19 @@ const FortuneWheel = ({
       window.scrollTo(0, 1);
     }, 0);
   }, [segments]);
+
+  // functions
+
+  function randomString() {
+    const chars =
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz".split("");
+    const length = 8;
+    let str = "";
+    for (let i = 0; i < length; i++) {
+      str += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return str;
+  }
 
   const wheelInit = () => {
     initCanvas();
@@ -75,6 +83,7 @@ const FortuneWheel = ({
     canvas?.addEventListener("click", spin, false);
     canvasContext = canvas.getContext("2d");
   };
+
   const spin = () => {
     isStarted = true;
     if (timerHandle === 0) {
@@ -85,6 +94,7 @@ const FortuneWheel = ({
       timerHandle = setInterval(onTimerTick, timerDelay);
     }
   };
+
   const onTimerTick = () => {
     frames++;
     draw();
@@ -232,6 +242,7 @@ const FortuneWheel = ({
     isStarted &&
       ctx.fillText(currentSegment, centerX + 10, centerY + size + 50);
   };
+
   const clear = () => {
     if (!canvasContext) {
       return false;
@@ -239,6 +250,7 @@ const FortuneWheel = ({
     const ctx = canvasContext;
     ctx.clearRect(0, 0, dimension, dimension);
   };
+
   return (
     <div id={wheelId.current}>
       <canvas
