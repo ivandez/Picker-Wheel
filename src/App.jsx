@@ -1,11 +1,10 @@
 import { useState } from "react";
 import FortuneWheel from "./components/FortuneWheel";
 import { useForm } from "react-hook-form";
+import "./App.css";
 
 function App() {
-  // const segments = ["better luck next time", "won 70", "won 10"];
-
-  const segColors = ["#EE4040", "#F0CF50", "#815CD1"];
+  const segColors = ["#5AB1BB", "#A5C882", "#F7DD72"];
 
   const { register, handleSubmit } = useForm();
 
@@ -20,7 +19,7 @@ function App() {
   const [segments, setSegments] = useState(["won 5", "won 70", "won 10"]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="container">
       <FortuneWheel
         segments={segments}
         segColors={segColors}
@@ -34,8 +33,19 @@ function App() {
         downDuration={600}
         fontFamily="Arial"
       />
-      <input type="text" {...register("option")} />
-    </form>
+      <form onSubmit={handleSubmit(onSubmit)} className="home-form">
+        <h2>Input:</h2>
+        <input
+          type="text"
+          {...register("option")}
+          placeholder="Write new option here"
+          className="form-input"
+        />
+        <button className="form-button" type="submit">
+          Add
+        </button>
+      </form>
+    </div>
   );
 }
 

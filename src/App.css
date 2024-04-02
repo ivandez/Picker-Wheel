@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  margin: 0 auto;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  border-radius: 15px;
+  max-width: 1500px;
+}
+
+.form-input {
+  height: 24px;
+  width: 358px;
+  padding: 6px;
+}
+
+.form-button {
+  background-color: #0aa4e6;
+  border: none;
+  color: white;
+  padding: 13px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+}

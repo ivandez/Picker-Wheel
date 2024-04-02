@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 
 const FortuneWheel = ({
   segments,
-  segColors,
+  segColors = ["#5AB1BB", "#A5C882", "#F7DD72"],
   winningSegment,
   onFinished,
   primaryColor = "black",
@@ -151,7 +151,7 @@ const FortuneWheel = ({
     ctx.arc(centerX, centerY, size, lastAngle, angle, false);
     ctx.lineTo(centerX, centerY);
     ctx.closePath();
-    ctx.fillStyle = "#F0CF50";
+    ctx.fillStyle = segColors[key];
     ctx.fill();
     ctx.stroke();
     ctx.save();
