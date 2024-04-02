@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState, useRef } from "react";
+import assignmentRandomColor from "../util/assignmentRandomColor";
 
 const FortuneWheel = ({
   segments,
-  segColors = ["#5AB1BB", "#A5C882", "#F7DD72"],
   winningSegment,
   onFinished,
   primaryColor = "black",
@@ -43,6 +43,8 @@ const FortuneWheel = ({
   let frames = 0;
   const centerX = size + 20;
   const centerY = size + 20;
+
+  const segColors = ["#5AB1BB", "#A5C882", "#F7DD72"];
 
   useEffect(() => {
     wheelInit();
@@ -147,7 +149,7 @@ const FortuneWheel = ({
     ctx.arc(centerX, centerY, size, lastAngle, angle, false);
     ctx.lineTo(centerX, centerY);
     ctx.closePath();
-    ctx.fillStyle = segColors[key];
+    ctx.fillStyle = assignmentRandomColor(key, segColors);
     ctx.fill();
     ctx.stroke();
     ctx.save();

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import FortuneWheel from "./components/FortuneWheel";
 import { useForm } from "react-hook-form";
+
 import "./App.css";
 
 function App() {
-  const segColors = ["#5AB1BB", "#A5C882", "#F7DD72"];
-
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -30,7 +29,6 @@ function App() {
     <div className="container">
       <FortuneWheel
         segments={segments}
-        segColors={segColors}
         onFinished={(winner) => onFinished(winner)}
         primaryColor="black"
         contrastColor="white"
