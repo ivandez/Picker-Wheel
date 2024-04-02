@@ -2,10 +2,9 @@
   margin: 0 auto;
   background-color: #ffffff;
   max-width: 1500px;
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  padding: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 0.5rem;
 }
 
 .home-form {
@@ -14,11 +13,11 @@
   align-items: center;
   border: 2px solid #000000;
   border-radius: 15px;
+  padding: 1rem;
 }
 
 .form-input {
   height: 24px;
-  width: 358px;
   padding: 6px;
 }
 
@@ -30,4 +29,16 @@
   text-decoration: none;
   cursor: pointer;
   margin-left: 10px;
+}
+
+@media (width >= 992px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+  .form-input {
+    width: 358px;
+  }
 }

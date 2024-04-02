@@ -67,10 +67,6 @@ const FortuneWheel = ({
     let canvas = document.getElementById(canvasId.current);
     if (navigator.userAgent.indexOf("MSIE") !== -1) {
       canvas = document.createElement("canvas");
-      canvas.setAttribute("width", 500);
-      canvas.setAttribute("height", 500);
-      // canvas.setAttribute("width", `${dimension}`);
-      // canvas.setAttribute("height", `${dimension}`);
       canvas.setAttribute("id", canvasId.current);
       document.getElementById(wheelId.current)?.appendChild(canvas);
     }

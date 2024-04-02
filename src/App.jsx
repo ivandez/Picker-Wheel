@@ -18,6 +18,14 @@ function App() {
 
   const [segments, setSegments] = useState(["won 5", "won 70", "won 10"]);
 
+  let wheelSize = 0;
+
+  if (window.innerWidth <= 992) {
+    wheelSize = 150;
+  } else {
+    wheelSize = 290;
+  }
+
   return (
     <div className="container">
       <FortuneWheel
@@ -28,7 +36,7 @@ function App() {
         contrastColor="white"
         buttonText="Spin"
         isOnlyOnce={false}
-        size={290}
+        size={wheelSize}
         upDuration={250}
         downDuration={600}
         fontFamily="Arial"
