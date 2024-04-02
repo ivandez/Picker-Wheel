@@ -34,16 +34,18 @@ function App() {
         fontFamily="Arial"
       />
       <form onSubmit={handleSubmit(onSubmit)} className="home-form">
-        <h2>Input:</h2>
-        <input
-          type="text"
-          {...register("option")}
-          placeholder="Write new option here"
-          className="form-input"
-        />
-        <button className="form-button" type="submit">
-          Add
-        </button>
+        <div>
+          <h2>Input:</h2>
+          <input
+            type="text"
+            {...register("option")}
+            placeholder="Write new option here"
+            className="form-input"
+          />
+          <button className="form-button" type="submit">
+            Add
+          </button>
+        </div>
       </form>
     </div>
   );
