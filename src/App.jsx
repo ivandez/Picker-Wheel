@@ -15,7 +15,7 @@ function App() {
     console.log(winner);
   };
 
-  const [segments, setSegments] = useState(["won 5", "won 70", "won 10"]);
+  const [segments, setSegments] = useState([]);
 
   let wheelSize = 0;
 

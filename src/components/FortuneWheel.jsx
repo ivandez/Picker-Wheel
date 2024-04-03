@@ -15,6 +15,10 @@ const FortuneWheel = ({
   downDuration = 1000,
   fontFamily = "proxima-nova",
 }) => {
+  if (segments.length === 0) {
+    segments = ["Example 1", "Example 2", "Example 3"];
+  }
+
   // hooks
   const canvasId = useRef(`canvas-${randomString()}`);
   const wheelId = useRef(`wheel-${randomString()}`);
