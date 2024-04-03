@@ -16,7 +16,11 @@ const FortuneWheel = ({
   fontFamily = "proxima-nova",
 }) => {
   if (segments.length === 0) {
-    segments = ["Example 1", "Example 2", "Example 3"];
+    segments = [
+      { name: "Example 1", uuid: self.crypto.randomUUID() },
+      { name: "Example 2", uuid: self.crypto.randomUUID() },
+      { name: "Example 3", uuid: self.crypto.randomUUID() },
+    ];
   }
 
   // hooks
@@ -156,7 +160,7 @@ const FortuneWheel = ({
       return false;
     }
     const ctx = canvasContext;
-    const value = segments[key];
+    const value = segments[key].name;
     ctx.save();
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
