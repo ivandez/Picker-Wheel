@@ -1,11 +1,15 @@
 import { useState } from "react";
 import FortuneWheel from "./components/FortuneWheel";
 import { useForm } from "react-hook-form";
+import useStore from "./hooks/useStore";
+import { useNavigate } from "react-router-dom";
 
 import "./App.css";
 
 function App() {
   const { register, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     setSegments([
@@ -14,8 +18,13 @@ function App() {
     ]);
   };
 
+  const updateWinner = useStore((state) => state.updateWinner);
+
   const onFinished = (winner) => {
-    console.log(winner);
+    updateWinner(winner);
+    setTimeout(() => {
+      navigate("/winner");
+    }, 500);
   };
 
   const handleDelete = (itemToDeleteUUID) => {
