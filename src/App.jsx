@@ -25,7 +25,7 @@ function App() {
     updateWinner(winner);
     setTimeout(() => {
       navigate("/winner");
-    }, 500);
+    }, 1000);
   };
 
   const handleDelete = (itemToDeleteUUID) => {
@@ -44,20 +44,43 @@ function App() {
     wheelSize = 290;
   }
 
+  const defaultSegments = [
+    { name: "Example 1", uuid: self.crypto.randomUUID() },
+    { name: "Example 2", uuid: self.crypto.randomUUID() },
+    { name: "Example 3", uuid: self.crypto.randomUUID() },
+  ];
+
   return (
     <div className="container">
-      <FortuneWheel
-        segments={segments}
-        onFinished={(winner) => onFinished(winner)}
-        primaryColor="black"
-        contrastColor="white"
-        buttonText="Spin"
-        isOnlyOnce={false}
-        size={wheelSize}
-        upDuration={250}
-        downDuration={600}
-        fontFamily="Arial"
-      />
+      {segments.length === 0 ? (
+        <FortuneWheel
+          segments={defaultSegments}
+          onFinished={(winner) => onFinished(winner)}
+          primaryColor="black"
+          contrastColor="white"
+          buttonText="Spin"
+          isOnlyOnce={false}
+          size={wheelSize}
+          upDuration={250}
+          downDuration={600}
+          fontFamily="Arial"
+        />
+      ) : (
+        <>
+          <FortuneWheel
+            segments={segments}
+            onFinished={(winner) => onFinished(winner)}
+            primaryColor="black"
+            contrastColor="white"
+            buttonText="Spin"
+            isOnlyOnce={false}
+            size={wheelSize}
+            upDuration={250}
+            downDuration={600}
+            fontFamily="Arial"
+          />
+        </>
+      )}
       <form onSubmit={handleSubmit(onSubmit)} className="home-form">
         <div>
           <h2>Input:</h2>
