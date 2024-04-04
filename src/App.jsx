@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, resetField } = useForm();
 
   const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ function App() {
       ...segments,
       { name: data.option, uuid: self.crypto.randomUUID() },
     ]);
+    resetField("option");
   };
 
   const updateWinner = useStore((state) => state.updateWinner);
