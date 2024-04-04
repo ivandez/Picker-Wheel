@@ -86,7 +86,7 @@ function App() {
           <h2>Input:</h2>
           <input
             type="text"
-            {...register("option")}
+            {...register("option", { required: true })}
             placeholder="Write new option here"
             className="form-input"
           />
