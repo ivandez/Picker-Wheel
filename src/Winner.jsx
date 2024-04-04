@@ -1,9 +1,14 @@
 import useStore from "./hooks/useStore";
+import { useNavigate } from "react-router-dom";
 
 import "./winner.css";
 
 const Winner = () => {
   const winner = useStore((state) => state.winner);
+
+  const navigate = useNavigate();
+
+  const removeWinner = useStore((state) => state.removeWinner);
 
   return (
     <section className="winner-container">
@@ -15,6 +20,16 @@ const Winner = () => {
         <div className="right-ribbon"></div>
         <div className="left-ribbon"></div>
       </div>
+      <button
+        className="winner-button"
+        type="submit"
+        onClick={() => {
+          removeWinner();
+          navigate("/");
+        }}
+      >
+        Go back to home
+      </button>
     </section>
   );
 };

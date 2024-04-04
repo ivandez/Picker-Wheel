@@ -11,8 +11,8 @@
   z-index: 0;
 }
 .winner-wrap {
-  max-width: 280px;
-  min-height: 280px;
+  width: 361px;
+  min-height: 100px;
   background: #b21f66;
   position: relative;
   padding: 1rem 2rem 6.5rem 2rem;
@@ -104,7 +104,19 @@
   max-width: 1500px;
   padding: 0.5rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner-button {
+  background-color: #198754;
+  border: none;
+  color: white;
+  padding: 13px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 16px;
 }
 
 @keyframes fadeout {
